@@ -4,6 +4,9 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <listener>
+  	<listener-class>com.project.dao.DBConnection</listener-class>
+  </listener>
   <servlet>
   	<servlet-name>TestServlet</servlet-name>
   	<display-name>TestServlet</display-name>

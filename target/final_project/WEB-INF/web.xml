@@ -4,4 +4,27 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <listener>
+  	<listener-class>com.project.dao.DBConnection</listener-class>
+  </listener>
+  <servlet>
+  	<servlet-name>TestServlet</servlet-name>
+  	<display-name>TestServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.project.model.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>User</servlet-name>
+  	<display-name>User</display-name>
+  	<description></description>
+  	<servlet-class>com.project.model.User</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TestServlet</servlet-name>
+  	<url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>User</servlet-name>
+  	<url-pattern>/User</url-pattern>
+  </servlet-mapping>
 </web-app>
