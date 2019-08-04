@@ -4,22 +4,25 @@ public class Member {
 	
 	private int memberId;
 	private String memberName;
+	private String memberCode;
 	private String birthday;
 	private String idNumber;
 	private String photoPath;
 	
-	public Member(String memberName, String birthday, String idNumber, String photoPath) {
+	public Member(String memberName, String memberCode, String birthday, String idNumber, String photoPath) {
 		super();
 		this.memberName = memberName;
+		this.memberCode = memberCode;
 		this.birthday = birthday;
 		this.idNumber = idNumber;
 		this.photoPath = photoPath;
 	}
 	
-	public Member(int memberId, String memberName, String birthday, String idNumber, String photoPath) {
+	public Member(int memberId, String memberName, String memberCode, String birthday, String idNumber, String photoPath) {
 		super();
 		this.memberId = memberId;
 		this.memberName = memberName;
+		this.memberCode = memberCode;
 		this.birthday = birthday;
 		this.idNumber = idNumber;
 		this.photoPath = photoPath;
@@ -39,6 +42,14 @@ public class Member {
 
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
+	}
+	
+	public String getMemberCode() {
+		return memberCode;
+	}
+	
+	public void setMemberCode(String memberCode) {
+		this.memberCode = memberCode;
 	}
 
 	public String getBirthday() {

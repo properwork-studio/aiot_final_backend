@@ -7,10 +7,10 @@ public class MedicineRecord {
 	private String timeStamp;
 	private String medicineCondition;
 	
-	public MedicineRecord(String memberName, String timeStamp, String medicineCondition) {
+	public MedicineRecord(String memberName, String medicineCondition) {
 		super();
 		this.memberName = memberName;
-		this.timeStamp = timeStamp;
+//		this.timeStamp = timeStamp;
 		this.medicineCondition = medicineCondition;
 	}
 	
