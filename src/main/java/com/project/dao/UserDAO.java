@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.project.model.User;
 
@@ -14,7 +16,7 @@ public class UserDAO {
 
 	private static final String SELECT_USER_BY_ID = "SELECT * FROM Users WHERE user_id =?";
 	private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM Users WHERE username =?";
-//	private static final String SELECT_ALL_USERS = "SELECT * FROM Users";
+	private static final String SELECT_ALL_USERS = "SELECT * FROM Users";
 //	private static final String DELETE_USERS_SQL = "DELETE FROM Users WHERE user_id = ?;";
 //	private static final String UPDATE_USERS_SQL = "UPDATE Users SET nickname = ?,email= ?, introduction =?, user_image =? WHERE user_id = ?;";
 	
@@ -87,6 +89,32 @@ public class UserDAO {
 			printSQLException(e);
 		}
 		return user;
+	}
+	
+	public List<User> selectAllUsers(Connection con) {
+
+		// using try-with-resources to avoid closing resources (boiler plate code)
+		List<User> users = new ArrayList<>();
+		try (
+			// Step :Create a statement using connection object
+			PreparedStatement preparedStatement = con.prepareStatement(SELECT_ALL_USERS);) {
+			System.out.println(preparedStatement);
+			// Step : Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Step : Process the ResultSet object.
+			while (rs.next()) {
+				int id = rs.getInt("user_id");
+				String userEmail = rs.getString("user_email");
+				String userPassword = rs.getString("user_password");
+				String userName = rs.getString("username");
+				String phoneNumber = rs.getString("phone_number");
+				users.add(new User(id, userEmail, userPassword, userName, phoneNumber));
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return users;
 	}
 	
 	
